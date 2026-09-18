@@ -1,0 +1,19 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import { CASE_STUDIES, CLINICAL_EXPERIENCE, DATA, PUBLICATIONS } from "@/data/resume";
+import { Mail, MapPin, Printer } from "lucide-react";
+---
+<Layout title="CV" description="Curriculum vitae of Mohammad Farhadi, MD—physician, clinical AI researcher, and health-technology co-founder.">
+  <main class="mx-auto max-w-4xl">
+    <header class="border-b border-border pb-8"><div class="flex flex-wrap items-start justify-between gap-6"><div><p class="eyebrow">Curriculum vitae</p><h1 class="text-4xl font-semibold tracking-tight">{DATA.name}</h1><p class="mt-2 text-lg text-muted-foreground">Physician · Clinical AI Researcher · Health-Technology Co-Founder</p></div><button onclick="window.print()" class="text-link print:hidden"><Printer className="size-3.5" /> Print / save PDF</button></div><div class="mt-5 flex flex-wrap gap-4 text-sm text-muted-foreground"><span class="inline-flex items-center gap-1.5"><MapPin className="size-4" /> {DATA.location}</span><a class="inline-flex items-center gap-1.5 hover:text-foreground" href={`mailto:${DATA.contact.email}`}><Mail className="size-4" /> {DATA.contact.email}</a></div></header>
+    <div class="mt-10 space-y-12">
+      <section><p class="eyebrow">Profile</p><p class="max-w-3xl text-lg leading-relaxed text-foreground/85">{DATA.description} {DATA.summary}</p></section>
+      <section><p class="eyebrow">Clinical AI</p><div class="space-y-6">{CASE_STUDIES.map((item) => <article><h2 class="font-semibold">{item.title}</h2><p class="mt-1 text-sm leading-relaxed text-muted-foreground">{item.summary} {item.scale}</p></article>)}</div></section>
+      <section><p class="eyebrow">Clinical experience</p><div class="space-y-6">{CLINICAL_EXPERIENCE.map((item) => <article><div class="flex flex-wrap justify-between gap-2"><h2 class="font-semibold">{item.role}</h2><span class="font-mono text-xs text-muted-foreground">{item.period}</span></div><p class="text-sm text-primary">{item.institution}</p><p class="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p></article>)}</div></section>
+      <section><p class="eyebrow">Education & registration</p><h2 class="font-semibold">Doctor of Medicine · Shiraz University of Medical Sciences</h2><p class="mt-1 text-sm text-muted-foreground">2018–2025 · Registered physician, IRIMC 228318</p></section>
+      <section><p class="eyebrow">Selected publications</p><div class="space-y-4">{PUBLICATIONS.slice(0, 6).map((item) => <article><h2 class="text-sm font-medium leading-snug">{item.title}</h2><p class="mt-1 text-xs text-muted-foreground">{item.venue} · {item.year} · {item.status}</p></article>)}</div></section>
+      <section><p class="eyebrow">Awards</p><p class="font-medium">Gold Medal · National Olympiad of Medicine, 2021</p><p class="mt-2 font-medium">Silver Medal · 8th National Nanotechnology Olympiad, 2016</p><p class="mt-2 font-medium">Bronze Medal · 7th National Nanotechnology Olympiad, 2015</p></section>
+    </div>
+  </main>
+</Layout>

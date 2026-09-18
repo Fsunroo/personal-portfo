@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import { CLINICAL_EXPERIENCE } from "@/data/resume";
+---
+<Layout title="Clinical Background" description="Clinical experience in oncology, hematology, transplantation, and emergency medicine.">
+  <main class="mx-auto max-w-4xl">
+    <PageHeader eyebrow="Clinical background" title="Clinical practice as design context." description="Direct patient care provides the context for how I frame risk, interpret evidence, and judge whether a technical system belongs in a clinical workflow." />
+    <div class="space-y-5">{CLINICAL_EXPERIENCE.map((item) => <article class="surface-card grid gap-5 p-6 sm:p-8 md:grid-cols-[1fr_auto]"><div><h2 class="text-xl font-semibold tracking-tight">{item.role}</h2><p class="mt-1 text-sm text-primary">{item.institution}</p><p class="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{item.description}</p></div><p class="font-mono text-xs text-muted-foreground">{item.period}</p></article>)}</div>
+    <section class="mt-12 border-t border-border pt-10"><p class="eyebrow">Registration</p><h2 class="text-xl font-semibold">Registered Physician</h2><p class="mt-2 text-muted-foreground">Islamic Republic of Iran Medical Council · Membership 228318</p><p class="mt-6 text-sm leading-relaxed text-muted-foreground">Medical degree, Shiraz University of Medical Sciences, 2018–2025.</p></section>
+  </main>
+</Layout>

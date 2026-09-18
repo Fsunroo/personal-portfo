@@ -1,0 +1,22 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import { CASE_STUDIES } from "@/data/resume";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+export function getStaticPaths() {
+  return CASE_STUDIES.map((study, index) => ({ params: { slug: study.slug }, props: { study, next: CASE_STUDIES[(index + 1) % CASE_STUDIES.length] } }));
+}
+const { study, next } = Astro.props;
+const fields = [["Problem", study.problem], ["My role", study.role], ["System", study.system], ["Scale", study.scale], ["Evidence", study.evidence], ["Outcome", study.outcome]];
+---
+
+<Layout title={study.title} description={study.summary}>
+  <main class="mx-auto max-w-4xl">
+    <a href="/clinical-ai" class="mb-10 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" /> Clinical AI</a>
+    <header class="max-w-3xl"><p class="eyebrow">{study.eyebrow}</p><h1 class="text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">{study.title}</h1><p class="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">{study.summary}</p><div class="mt-6 flex flex-wrap gap-2">{study.tags.map((tag) => <span class="pill">{tag}</span>)}</div></header>
+    <div class="my-12 h-px bg-border"></div>
+    <div>{fields.map(([label, value], index) => <section class="grid gap-3 border-b border-border py-8 first:pt-0 md:grid-cols-[10rem_1fr] md:gap-10"><div class="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary">0{index + 1} · {label}</div><p class="text-base leading-relaxed text-foreground/85 sm:text-lg">{value}</p></section>)}</div>
+    <a href={`/clinical-ai/${next.slug}`} class="surface-card group mt-12 flex items-center justify-between gap-6 p-6 hover:border-primary/35"><div><p class="text-xs uppercase tracking-widest text-muted-foreground">Next case study</p><p class="mt-1 font-semibold">{next.title}</p></div><ArrowRight className="size-5 transition-transform group-hover:translate-x-1" /></a>
+  </main>
+</Layout>

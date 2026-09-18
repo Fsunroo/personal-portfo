@@ -1,0 +1,29 @@
+---
+title: "Longitudinal laboratory data is an engineering problem first"
+publishedAt: "2026-09-10"
+author: "Mohammad Farhadi"
+summary: "Before modeling clinical trajectories, the underlying time series must be made trustworthy."
+---
+
+A laboratory result is easy to represent as a number. A trustworthy laboratory trajectory is not.
+
+The same biomarker may arrive under different identifiers, units, reference ranges, timestamps, or admission contexts. Corrections can appear after the original result. Hospital systems may resend old records or omit expected batches. These are not edge cases; they define the problem.
+
+## Start with invariants
+
+Before building a risk model, define what must remain true:
+
+- every value retains its source identity;
+- repeated ingestion is idempotent;
+- units and reference ranges remain explicit;
+- corrections do not silently erase history;
+- patient and admission boundaries are reproducible;
+- missingness is observable rather than disguised.
+
+Only after those invariants hold does temporal feature engineering become meaningful.
+
+## Interpretation needs context
+
+A clinically important change is rarely a single threshold crossing. Direction, rate, baseline, medication exposure, and the wider laboratory pattern all matter. An interpretable reasoning layer should preserve those relationships and show them to the clinician rather than collapse them into an unexplained score.
+
+For longitudinal clinical AI, data infrastructure is part of the model.

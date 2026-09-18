@@ -1,0 +1,22 @@
+---
+title: "Clinical AI needs an evidence trail"
+publishedAt: "2026-09-18"
+author: "Mohammad Farhadi"
+summary: "Why a clinically useful AI system must make the path from source evidence to recommendation inspectable."
+---
+
+Clinical AI is often discussed as a prediction problem. In practice, the harder problem is building a system whose reasoning can be inspected when the context is incomplete, the evidence changes, or the recommendation conflicts with a clinician's judgment.
+
+An evidence trail should connect four things: the source, the transformation, the patient context, and the final recommendation. If one of those links is missing, a polished explanation may still be impossible to audit.
+
+## Retrieval is not provenance
+
+Retrieval-augmented generation can make relevant pharmacology material available to a model. That does not, by itself, establish provenance. A production system also needs stable source identifiers, versioned extraction, explicit inclusion rules, and a record of which evidence influenced each clinical rule.
+
+The useful question is not simply “Can the system cite something?” It is “Can another person reconstruct why this specific recommendation appeared for this specific patient?”
+
+## Explanations should match the decision
+
+A good explanation is selective. It should expose the variables that actually changed the recommendation: renal function, dose, concurrent medication, timing, or another clinically meaningful factor. More text is not necessarily more transparency.
+
+For decision support, traceability is part of the product—not documentation added after the model is finished.

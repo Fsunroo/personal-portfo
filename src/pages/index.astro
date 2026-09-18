@@ -1,0 +1,108 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import { ArrowRight, BriefcaseMedical, MapPin } from "lucide-react";
+import {
+  CASE_STUDIES,
+  CLINICAL_EXPERIENCE,
+  DATA,
+  PROOF_POINTS,
+  PUBLICATIONS,
+} from "@/data/resume";
+
+const selectedPublications = PUBLICATIONS.filter((item) => item.status === "Published").slice(0, 3);
+---
+
+<Layout>
+  <main class="space-y-24">
+    <section class="grid items-start gap-10 pt-4 md:grid-cols-[1fr_auto] md:gap-16">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Physician · researcher · builder</p>
+        <h1 class="text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+          Physician building <span class="text-primary">reliable clinical AI.</span>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          {DATA.summary} My focus is medication safety, longitudinal clinical data, and systems clinicians can inspect and trust.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/clinical-ai" class="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
+            Explore clinical AI <ArrowRight className="size-4" />
+          </a>
+          <a href="/research" class="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-accent">
+            View research
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+          <span class="inline-flex items-center gap-1.5"><MapPin className="size-4" /> Shiraz, Iran</span>
+          <span class="inline-flex items-center gap-1.5"><BriefcaseMedical className="size-4" /> Co-founder & technical lead at <a class="underline decoration-border underline-offset-4 hover:text-foreground" href="https://synara.ir" target="_blank">Synara</a></span>
+        </div>
+      </div>
+      <div class="relative mx-auto hidden md:block">
+        <div class="absolute -inset-3 rounded-full border border-primary/15"></div>
+        <img src={DATA.avatarUrl} alt="Mohammad Farhadi" class="relative size-36 rounded-full border-4 border-background object-cover shadow-xl" />
+      </div>
+    </section>
+
+    <section aria-label="Impact" class="grid overflow-hidden rounded-2xl border border-border bg-card/75 sm:grid-cols-2 lg:grid-cols-4">
+      {PROOF_POINTS.map((point) => (
+        <div class="border-b border-border p-5 last:border-b-0 sm:[&:nth-child(odd)]:border-r sm:[&:nth-child(3)]:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0">
+          <strong class="block text-2xl font-semibold tracking-tight text-primary">{point.value}</strong>
+          <span class="mt-1 block text-sm text-muted-foreground">{point.label}</span>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <div class="mb-8 flex items-end justify-between gap-5">
+        <div><p class="eyebrow">Selected work</p><h2 class="section-heading">Clinical AI in production</h2></div>
+        <a href="/clinical-ai" class="hidden items-center gap-1 text-sm text-muted-foreground hover:text-foreground sm:flex">All case studies <ArrowRight className="size-4" /></a>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-3">
+        {CASE_STUDIES.map((study, index) => (
+          <a href={`/clinical-ai/${study.slug}`} class="surface-card group flex min-h-72 flex-col p-6 transition-all hover:-translate-y-1 hover:border-primary/35">
+            <div class="mb-8 flex items-center justify-between"><span class="font-mono text-xs text-primary">0{index + 1}</span><ArrowRight className="size-4 -translate-x-1 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" /></div>
+            <p class="text-xs font-medium uppercase tracking-widest text-muted-foreground">{study.eyebrow}</p>
+            <h3 class="mt-2 text-xl font-semibold tracking-tight">{study.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{study.summary}</p>
+            <div class="mt-auto flex flex-wrap gap-1.5 pt-6">{study.tags.slice(0, 2).map((tag) => <span class="pill">{tag}</span>)}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="grid gap-10 lg:grid-cols-[1.15fr_.85fr]">
+      <div>
+        <div class="mb-7 flex items-end justify-between gap-4">
+          <div><p class="eyebrow">Selected research</p><h2 class="section-heading">Publications</h2></div>
+          <a href="/research" class="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">All research <ArrowRight className="size-4" /></a>
+        </div>
+        <div class="divide-y divide-border border-y border-border">
+          {selectedPublications.map((publication) => (
+            <article class="py-5">
+              <div class="mb-2 flex items-center gap-2 text-xs text-muted-foreground"><span class="rounded-full bg-emerald-500/10 px-2 py-1 text-emerald-700 dark:text-emerald-300">{publication.status}</span><span class="font-mono">{publication.year}</span></div>
+              <h3 class="font-medium leading-snug">{publication.title}</h3>
+              <p class="mt-1 text-sm italic text-muted-foreground">{publication.venue}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">Clinical background</p>
+        <h2 class="section-heading">Medicine informs the system.</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">Clinical practice is not a sidebar to the technical work. It shapes what gets measured, how risk is communicated, and whether a tool fits the realities of care.</p>
+        <div class="mt-7 space-y-6 border-l border-border pl-5">
+          {CLINICAL_EXPERIENCE.map((item) => <article><p class="font-medium">{item.role}</p><p class="mt-1 text-sm text-muted-foreground">{item.institution} · {item.period}</p></article>)}
+        </div>
+        <a href="/clinical" class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">Clinical background <ArrowRight className="size-4" /></a>
+      </div>
+    </section>
+
+    <section class="surface-card overflow-hidden p-7 sm:p-10">
+      <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+        <div><p class="eyebrow">Work together</p><h2 class="section-heading">Building or evaluating clinical AI?</h2><p class="mt-4 max-w-2xl leading-relaxed text-muted-foreground">I’m interested in clinically grounded research, trustworthy decision support, and collaborations that connect strong methodology with real-world deployment.</p></div>
+        <div class="flex flex-wrap gap-3"><a href="mailto:fsunroo@gmail.com" class="rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">Email me</a><a href="/cv" class="rounded-xl border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent">View CV</a></div>
+      </div>
+    </section>
+  </main>
+</Layout>

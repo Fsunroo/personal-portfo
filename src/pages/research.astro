@@ -1,0 +1,10 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PublicationFilter from "@/components/PublicationFilter";
+import { PUBLICATIONS } from "@/data/resume";
+---
+<Layout title="Research" description="Publications and current research in clinical AI, oncology, computational biology, and clinical medicine.">
+  <main><PageHeader eyebrow="Research" title="Evidence before enthusiasm." description="Research spanning clinical AI implementation, oncology, medication safety, medical imaging, and computational biology. Publication status is shown explicitly." /><PublicationFilter publications={PUBLICATIONS} client:load /></main>
+</Layout>
