@@ -36,11 +36,13 @@ const personJsonLd = JSON.stringify({
   name: DATA.name,
   url: CONFIG.site.url,
   image: DATA.avatarUrl,
+  email: DATA.contact.email,
   jobTitle: "Physician and Clinical AI Researcher",
   address: { "@type": "PostalAddress", addressLocality: "Shiraz", addressCountry: "IR" },
   sameAs: [
     DATA.contact.social.GitHub.url,
     DATA.contact.social.LinkedIn.url,
+    DATA.contact.social.Telegram.url,
   ],
 }).replace(/</g, "\\u003c");
 ---

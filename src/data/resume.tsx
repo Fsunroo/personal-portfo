@@ -18,6 +18,7 @@ export const DATA = {
     "I work across clinical medicine, applied AI, and production software—turning complex clinical requirements into evidence-linked tools that can operate inside real hospital workflows.",
   avatarUrl: "https://avatars.githubusercontent.com/u/48972765?v=4",
   ogImage: "/og_image.png",
+  resumeUrl: "/Mohammad-Farhadi-Resume.pdf",
   navbar: [
     { href: "/", icon: House, label: "Home" },
     { href: "/clinical-ai", icon: BrainCircuit, label: "Clinical AI" },
@@ -27,6 +28,7 @@ export const DATA = {
   ],
   contact: {
     email: "fsunroo@gmail.com",
+    telegram: "@fsunroo",
     social: {
       GitHub: {
         name: "GitHub",
@@ -41,10 +43,16 @@ export const DATA = {
         navbar: true,
       },
       email: {
-        name: "Send email",
+        name: "Email",
         url: "mailto:fsunroo@gmail.com",
         icon: Icons.email,
         navbar: false,
+      },
+      Telegram: {
+        name: "Telegram",
+        url: "https://t.me/fsunroo",
+        icon: Icons.telegram,
+        navbar: true,
       },
     },
   },

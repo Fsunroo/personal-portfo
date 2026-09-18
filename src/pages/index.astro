@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import Layout from "@/layouts/Layout.astro";
-import { ArrowRight, BriefcaseMedical, MapPin } from "lucide-react";
+import { ArrowRight, BriefcaseMedical, Download, Mail, MapPin, Send } from "lucide-react";
 import {
   CASE_STUDIES,
   CLINICAL_EXPERIENCE,
@@ -100,8 +100,18 @@ const selectedPublications = PUBLICATIONS.filter((item) => item.status === "Publ
 
     <section class="surface-card overflow-hidden p-7 sm:p-10">
       <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-        <div><p class="eyebrow">Work together</p><h2 class="section-heading">Building or evaluating clinical AI?</h2><p class="mt-4 max-w-2xl leading-relaxed text-muted-foreground">I’m interested in clinically grounded research, trustworthy decision support, and collaborations that connect strong methodology with real-world deployment.</p></div>
-        <div class="flex flex-wrap gap-3"><a href="mailto:fsunroo@gmail.com" class="rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">Email me</a><a href="/cv" class="rounded-xl border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent">View CV</a></div>
+        <div>
+          <p class="eyebrow">Work together</p><h2 class="section-heading">Building or evaluating clinical AI?</h2><p class="mt-4 max-w-2xl leading-relaxed text-muted-foreground">I’m interested in clinically grounded research, trustworthy decision support, and collaborations that connect strong methodology with real-world deployment.</p>
+          <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <a href={`mailto:${DATA.contact.email}`} class="inline-flex items-center gap-1.5 hover:text-foreground"><Mail className="size-4" /> {DATA.contact.email}</a>
+            <a href={DATA.contact.social.Telegram.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-foreground"><Send className="size-4" /> {DATA.contact.telegram}</a>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={`mailto:${DATA.contact.email}`} class="rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">Email me</a>
+          <a href={DATA.resumeUrl} download class="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent"><Download className="size-4" /> Résumé PDF</a>
+          <a href="/cv" class="rounded-xl border border-border px-4 py-2.5 text-sm font-medium hover:bg-accent">View CV</a>
+        </div>
       </div>
     </section>
   </main>
