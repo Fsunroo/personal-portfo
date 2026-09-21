@@ -3,7 +3,7 @@ export const CONFIG = {
   // Site Settings
   // ---------------------------------------------------------------------------
   site: {
-    url: "https://fsunroo.com",
+    url: "https://fsunroo.ir",
     locale: "en_US",
     twitterHandle: "",
   },

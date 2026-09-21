@@ -10,7 +10,7 @@ import {
 export const DATA = {
   name: "Mohammad Farhadi, MD",
   initials: "MF",
-  url: "https://fsunroo.com",
+  url: "https://fsunroo.ir",
   location: "Shiraz, Iran",
   description:
     "Physician, clinical AI researcher, and health-technology founder building reliable systems for safer clinical decisions.",
