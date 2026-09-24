@@ -6,9 +6,9 @@ import { CASE_STUDIES } from "@/data/resume";
 import { ArrowRight } from "lucide-react";
 ---
 
-<Layout title="Clinical AI" description="Case studies in medication safety, longitudinal clinical data, and hospital-system integration.">
+<Layout title="Clinical AI" description="Case studies in clinical surveillance, medication safety, longitudinal clinical data, and hospital-system integration.">
   <main>
-    <PageHeader eyebrow="Clinical AI" title="Systems designed for clinical reality." description="Selected work translating clinical requirements into auditable, fault-tolerant systems—from evidence retrieval and inference to hospital integration and production monitoring." />
+    <PageHeader eyebrow="Clinical AI" title="Systems designed for clinical reality." description="Selected work translating clinical requirements into auditable systems, from evidence-grounded surveillance and medication safety to hospital integration and production monitoring." />
     <div class="space-y-5">
       {CASE_STUDIES.map((study, index) => (
         <a href={`/clinical-ai/${study.slug}`} class="surface-card group grid gap-6 p-6 transition-all hover:border-primary/35 sm:p-8 md:grid-cols-[5rem_1fr_auto] md:items-start">

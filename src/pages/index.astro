@@ -22,7 +22,7 @@ const selectedPublications = PUBLICATIONS.filter((item) => item.status === "Publ
           Physician building <span class="text-primary">reliable clinical AI.</span>
         </h1>
         <p class="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-          {DATA.summary} My focus is medication safety, longitudinal clinical data, and systems clinicians can inspect and trust.
+          {DATA.summary} My focus is medication safety, longitudinal clinical surveillance, and systems clinicians can inspect and trust.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="/clinical-ai" class="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
@@ -54,10 +54,10 @@ const selectedPublications = PUBLICATIONS.filter((item) => item.status === "Publ
 
     <section>
       <div class="mb-8 flex items-end justify-between gap-5">
-        <div><p class="eyebrow">Selected work</p><h2 class="section-heading">Clinical AI in production</h2></div>
+        <div><p class="eyebrow">Selected work</p><h2 class="section-heading">Clinical AI systems</h2></div>
         <a href="/clinical-ai" class="hidden items-center gap-1 text-sm text-muted-foreground hover:text-foreground sm:flex">All case studies <ArrowRight className="size-4" /></a>
       </div>
-      <div class="grid gap-4 lg:grid-cols-3">
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {CASE_STUDIES.map((study, index) => (
           <a href={`/clinical-ai/${study.slug}`} class="surface-card group flex min-h-72 flex-col p-6 transition-all hover:-translate-y-1 hover:border-primary/35">
             <div class="mb-8 flex items-center justify-between"><span class="font-mono text-xs text-primary">0{index + 1}</span><ArrowRight className="size-4 -translate-x-1 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" /></div>

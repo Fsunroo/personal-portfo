@@ -67,6 +67,31 @@ export const PROOF_POINTS = [
 
 export const CASE_STUDIES = [
   {
+    slug: "synai",
+    eyebrow: "Clinical surveillance research",
+    title: "SynAI",
+    summary:
+      "An evidence-grounded clinical surveillance platform for identifying actionable care gaps from longitudinal acute-care data.",
+    problem:
+      "Important clinical signals arrive across medications, laboratory results, notes, observations, and imaging at different times and with different levels of certainty. Reviewing these fragments manually can delay recognition of unresolved care needs.",
+    role:
+      "Designed the clinical and technical architecture, translating the surveillance question into a time-aware patient-state model, evidence-verification workflow, and clinician-centered evaluation plan.",
+    system:
+      "A longitudinal pipeline that reconstructs what was known at each moment, retrieves relevant patient and clinical evidence, uses bounded clinical tools, verifies support and conflict, and produces concise candidate findings for clinician review.",
+    scale:
+      "Research-stage platform designed for expert-adjudicated evaluation across hospitals, wards, and patient groups.",
+    evidence:
+      "Every candidate finding is linked to its source records, preserves the temporal boundary, reports evidence conflicts and coverage limits, and excludes future information from retrospective evaluation.",
+    outcome:
+      "A reviewable surveillance workflow designed to recognize actionable care gaps earlier while keeping final judgment and action with clinicians.",
+    tags: [
+      "Clinical surveillance",
+      "Longitudinal EHR",
+      "Evidence verification",
+      "Clinical AI",
+    ],
+  },
+  {
     slug: "synrx",
     eyebrow: "Medication safety",
     title: "SynRx",
